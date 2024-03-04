@@ -45,10 +45,8 @@
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li>
                 <a href="{{ url('/clothing') }}">Home</a>
-
               </li>
 
-              <li><a href="#collection">Shop</a></li>
               <li><a href="#footer">Contact</a></li>
             </ul>
           </nav>
@@ -86,8 +84,6 @@
                     <th class="product-thumbnail">Image</th>
                     <th class="product-name">Product</th>
                     <th class="product-price">Price</th>
-                    <th class="product-quantity">Quantity</th>
-                    <th class="product-total">Total</th>
                     <th class="product-remove">Remove</th>
                   </tr>
                 </thead>
@@ -102,18 +98,7 @@
                     {{ $details['name'] }}
                     </td>
                     <td> {{ $details['price'] }}</td>
-                    <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                        </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                        </div>
-                      </div>
-                    </td>
-                    <td>$49.00</td>
+
                     <td><a href="#" class="btn btn-primary height-auto btn-sm delete-product">X</a></td>
                   </tr>
 
@@ -131,7 +116,7 @@
             <div class="row mb-5">
 
               <div class="col-md-6">
-                <a href="" class="btn btn-outline-primary btn-sm btn-block" id="cont-shopping">Continue Shopping</a>
+                <a href="{{ url('/clothing') }}" class="btn btn-outline-primary btn-sm btn-block" id="cont-shopping">Continue Shopping</a>
               </div>
             </div>
 
@@ -144,20 +129,15 @@
                     <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                   </div>
                 </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <span class="text-black">Subtotal</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black">TZS - 40000/=</strong>
-                  </div>
-                </div>
                 <div class="row mb-5">
                   <div class="col-md-6">
                     <span class="text-black">Total</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">TZS - 40000/=</strong>
+
+                    <strong class="text-black">TZS - {{
+                   count((array) session('cart'))*$details['price']
+                    }}/=</strong>
                   </div>
                 </div>
 
@@ -173,7 +153,15 @@
       </div>
     </div>
 
-    @include('layouts.contacts')
+    <div class="site-section" id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="title-section mb-5 col-12">
+              <h2 class="text-uppercase">Contacts</h2>
+            </div>
+          </div>
+
+    @include('layout.contacts')
 
   </div>
 
@@ -193,7 +181,9 @@
 
               <div class="mb-3">
                 <label for="price" class="form-label">TOTAL PRICE</label>
-                <input type="text" class="form-control" name="price" value="TZS - 40000/=" readonly>
+                <input type="text" class="form-control" name="price" value="TZS - {{
+                    count((array) session('cart'))*$details['price']
+                     }}/=" readonly>
               </div>
 
               <button class="btn btn-primary btn-lg btn-block confirm-order">Confirm order</button>
@@ -205,6 +195,24 @@
 
 
 <script type="text/javascript">
+
+
+
+const order = document.querySelector('.order');
+const confirmOrder = document.querySelector('.order-form');
+const overlay = document.querySelector('.overlay');
+
+order.addEventListener('click',function(){
+    confirmOrder.classList.remove('hidden');
+    overlay.classList.remove( 'hidden' );
+});
+
+overlay.addEventListener('click',function(){
+    confirmOrder.classList.add('hidden');
+    overlay.classList.add('hidden');
+});
+
+
     $(".delete-product").click(function(e){
     e.preventDefault();
 
@@ -237,7 +245,7 @@
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-  <script src="js/order.js"></script>
+
 
   </body>
 </html>

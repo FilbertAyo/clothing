@@ -38,3 +38,7 @@ Route::get('/clothing',[HomeController::class ,'home']);
 
 Route::get('/product/add-to-cart/{id}', [HomeController::class, 'addProduct'])->name('product.to.cart');
 
+Route::get('/shopping/cart', [HomeController::class, 'cart'])->name('shopping.cart');
+Route::get('/delete/cart/product',[HomeController::class,'deleteProduct'])->name('delete.cart.product');
+
+Route::get('/cart',[HomeController::class , 'cart']);

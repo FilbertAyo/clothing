@@ -32,7 +32,7 @@
           <div class="d-flex align-items-center justify-content-between">
             <div class="logo">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Kibegi-store</a>
+                <a href="{{ route('dashboard') }}" class="js-logo-clone">Kibegi-store</a>
               </div>
             </div>
             <div class="main-nav d-none d-lg-block">

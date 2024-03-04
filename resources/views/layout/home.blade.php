@@ -55,10 +55,10 @@
         </div>
         <div class="icons">
 
-          {{-- <a href="{{ route('shopping.cart') }}" class="icons-btn d-inline-block bag ">
+          <a href="{{ route('shopping.cart') }}" class="icons-btn d-inline-block bag ">
             <span class="icon-shopping-bag"></span>
             <span class="number">{{ count((array) session('cart')) }}</span>
-          </a> --}}
+          </a>
           <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
         </div>
       </div>
@@ -156,7 +156,7 @@
     </div>
   </div>
 
-  <div class="site-section" id="women">
+  <div class="site-section" id="footer">
     <div class="container">
       <div class="row">
         <div class="title-section mb-5 col-12">

@@ -1,4 +1,4 @@
-<footer class="site-footer custom-border-top" id="footer">
+<footer class="site-footer custom-border-top">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
