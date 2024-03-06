@@ -43,8 +43,7 @@
 
                   </li>
 
-                  <li class=""><a href="#collection">Mens collection</a></li>
-                  <li><a href="#">Shoes</a></li>
+                  <li><a href="{{ url('/shoes') }}">Shoes</a></li>
 
                   <li><a href="contact.html">Feedback</a></li>
                 </ul>
@@ -61,13 +60,13 @@
 
 
 
-        <div style="display: flex; justify-content:center; color: black;">NEW WOMEN CLOTH DETAILS</div>
+        <div style="display: flex; justify-content:center; color: black;">CLOTH DETAILS</div>
 
 
 
         <div class="mb-3">
               <label for="image" class="form-label">Image</label>
-              <input  class="form-control" name="image" placeholder="image" value="{{ $product->image }}" readonly>
+              <img  class="form-control" name="image" placeholder="image" src="{{ asset($product->image )}}" style="height: auto;" readonly>
             </div>
 
 

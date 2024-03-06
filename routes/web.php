@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShoesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -34,11 +35,13 @@ require __DIR__.'/auth.php';
 
 
 Route::resource('admin',ProductController::class);
+Route::resource('shoes', ShoesController::class);
+
 Route::get('/clothing',[HomeController::class ,'home']);
+Route::get('/cart',[HomeController::class , 'cart']);
 
 Route::get('/product/add-to-cart/{id}', [HomeController::class, 'addProduct'])->name('product.to.cart');
-
 Route::get('/shopping/cart', [HomeController::class, 'cart'])->name('shopping.cart');
 Route::get('/delete/cart/product',[HomeController::class,'deleteProduct'])->name('delete.cart.product');
 
-Route::get('/cart',[HomeController::class , 'cart']);
+

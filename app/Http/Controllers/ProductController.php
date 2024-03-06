@@ -12,7 +12,9 @@ class ProductController extends Controller
     public function index()
     {
 
-        $product = Product::orderBy('created_at','DESC')->get();
+        // $product = Product::orderBy('created_at','DESC')->get();
+
+        $product = Product::all();
 
         return view('products.create_wc',compact('product'));
     }
@@ -30,7 +32,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
+        // Product::create($request->all());
+
+        $requestData= $request->all();
+        $fileName = time().$request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('images',$fileName,'public');
+        $requestData['image'] = '/storage/'.$path;
+        Product::create($requestData);
+
         return redirect()->route('admin.index')->with('success',"Product added successfully");
     }
 

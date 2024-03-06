@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use App\Models\Shoes;
 
 class HomeController extends Controller
 {
     public function home(){
 
         $product = DB::table('products')->get();
+        $shoes = DB::table('shoes')->get();
 
     return view("layout.home",[
-        "products"=> $product
+        "products"=> $product,
+        "shoes"=> $shoes
       ]);
          }
 

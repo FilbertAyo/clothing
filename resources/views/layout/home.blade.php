@@ -121,7 +121,7 @@
     <div class="container">
       <div class="row">
         <div class="title-section mb-5 col-12">
-          <h2 class="text-uppercase">Women clothes</h2>
+          <h2 class="text-uppercase">Available Clothes</h2>
         </div>
       </div>
 
@@ -137,7 +137,7 @@
         @foreach ($products as $prod)
         <div class="col-lg-4 col-md-6 item-entry mb-4">
           <a href="#" class="product-item md-height bg-gray d-block">
-            <img src="{{ $prod->image }}" alt="Image" class="img-fluid">
+            <img src="{{ asset($prod->image) }}" alt="Image" class="img-fluid">
           </a>
 
           <div class="col-md-5" style="display: flex; float:right; margin:0;">
@@ -150,8 +150,48 @@
 
         </div>
         @endforeach
-
       </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="title-section mb-5 col-12">
+          <h2 class="text-uppercase">Available Shoes</h2>
+        </div>
+      </div>
+
+
+      @if(session('success'))
+      <div class="alert alert-success">
+      {{ session('success') }}
+      </div>
+      @endif
+
+            <div class="row">
+
+              @foreach ($shoes as $shoe)
+              <div class="col-lg-4 col-md-6 item-entry mb-4">
+                <a href="#" class="product-item md-height bg-gray d-block">
+                  <img src="{{ asset($shoe->s_image) }}" alt="Image" class="img-fluid">
+                </a>
+
+                <div class="col-md-5" style="display: flex; float:right; margin:0;">
+                  <a href="" class="btn btn-outline-primary btn-block">Add to Cart</a>
+                </div>
+
+                <h2 class="item-title"><a href="#">{{ $shoe->s_name }}</a></h2>
+                <td class="item-price">TZS-{{ $shoe->s_price }}/=</td>
+
+
+              </div>
+              @endforeach
+            </div>
+
 
     </div>
   </div>
@@ -165,6 +205,9 @@
       </div>
 
   @include('layout.contacts')
+    </div>
+  </div>
+
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>

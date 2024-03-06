@@ -92,7 +92,7 @@
                     @foreach(session('cart') as $id => $details)
                   <tr>
                     <td class="product-thumbnail">
-                      <img src="{{ $details['image'] }}" alt="Image" class="img-fluid">
+                      <img src="{{ asset($details['image'] )}}" alt="Image" class="img-fluid">
                     </td>
                     <td class="product-name">
                     {{ $details['name'] }}
@@ -136,7 +136,7 @@
                   <div class="col-md-6 text-right">
 
                     <strong class="text-black">TZS - {{
-                   count((array) session('cart'))*$details['price']
+                   count((array) session('cart'))
                     }}/=</strong>
                   </div>
                 </div>
@@ -182,7 +182,7 @@
               <div class="mb-3">
                 <label for="price" class="form-label">TOTAL PRICE</label>
                 <input type="text" class="form-control" name="price" value="TZS - {{
-                    count((array) session('cart'))*$details['price']
+                    count((array) session('cart'))
                      }}/=" readonly>
               </div>
 

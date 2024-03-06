@@ -38,13 +38,13 @@
             <div class="main-nav d-none d-lg-block">
               <nav class="site-navigation text-right text-md-center" role="navigation">
                 <ul class="site-menu js-clone-nav d-none d-lg-block">
-                  <li class="active">
+                  <li>
                     <a href="{{ url('/admin') }}">Cloth Collection</a>
 
                   </li>
-                  <li><a href="{{ url('/shoes') }}">Shoes</a></li>
+                  <li class="active"><a href="{{ url('/shoes') }}">Shoes</a></li>
 
-                  <li><a href="contact.html">Feedback</a></li>
+                  <li><a href="">Feedback</a></li>
                 </ul>
               </nav>
             </div>
@@ -61,7 +61,7 @@
       <div class="container py-5">
 
         <div class="title-section mb-5 col-12">
-            <h2 class="text-uppercase">Available clothes</h2>
+            <h2 class="text-uppercase">Available Shoes</h2>
           </div>
 
 <div class="col-md-12">
@@ -79,31 +79,31 @@
                   <tr>
                     <th>No.</th>
                     <th class="product-thumbnail">Image</th>
-                    <th class="product-name">Product</th>
+                    <th class="product-name">Shoe Name</th>
                     <th class="product-price">Price (each)</th>
                     <th class="product-price">Quantity</th>
                     <th class="product-remove">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @if($product->count()>0)
-                    @foreach ($product as $prod)
+                    @if($shoes->count()>0)
+                    @foreach ($shoes as $shoe)
 
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td class="product-thumbnail">
-                      <img src="{{ asset($prod->image) }}" alt="" class="img-fluid">
+                      <img src="{{ asset($shoe->s_image) }}" alt="" class="img-fluid">
                     </td>
                     <td class="product-name">
-                        {{ $prod->name }}
+                        {{ $shoe->s_name }}
                     </td>
-                    <td>TZS-{{ $prod->price }}/=</td>
-                    <td>{{ $prod->quantity }}</td>
+                    <td>TZS-{{ $shoe->s_price }}/=</td>
+                    <td>{{ $shoe->s_quantity }}</td>
                     <td>
-                        <a href="{{ route('admin.show', $prod->id) }}" class="btn btn-blue height-auto ">Details</a>
-                        <a href="{{ route('admin.edit', $prod->id) }}" class="btn btn-secondary height-auto ">Edit</a>
+                        <a href="{{ route('shoes.show', $shoe->id) }}" class="btn btn-blue height-auto ">Details</a>
+                        <a href="{{ route('shoes.edit', $shoe->id) }}" class="btn btn-secondary height-auto ">Edit</a>
 
-                        <form action="{{ route('admin.destroy',$prod->id) }}" method="POST" type= "button" class="btn height-auto p-0" onsubmit="return confirm('Delete')">
+                        <form action="{{ route('shoes.destroy',$shoe->id) }}" method="POST" type= "button" class="btn height-auto p-0" onsubmit="return confirm('Delete')">
                             @csrf
                             @method('DELETE')
 
@@ -130,7 +130,7 @@
 
       <div class="container py-7">
 
-        @yield('body')
+        @yield('content')
       </div>
 
 

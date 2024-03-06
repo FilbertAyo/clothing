@@ -49,7 +49,7 @@
 
                   <li><a href="{{ url('/shoes') }}">Shoes</a></li>
 
-                  <li><a href="contact.html">Feedback</a></li>
+                  <li><a href="">Feedback</a></li>
                 </ul>
               </nav>
             </div>
@@ -62,32 +62,32 @@
 
 <div class="add_form">
 
-<form action="{{ route('admin.update', $product->id)}}" method="POST">
+<form action="{{ route('shoes.update', $shoes->id)}}" method="POST">
     @csrf
     @method('PUT')
-        <div style="display: flex; justify-content:center; color: black;">EDIT CLOTH DETAILS </div>
+        <div style="display: flex; justify-content:center; color: black;">NEW WOMEN CLOTH DETAILS</div>
 
 
 
         <div class="mb-3">
               <label for="image" class="form-label">Image</label>
-              <img  class="form-control" name="image" placeholder="image" src="{{asset($product->image)  }}" style="height: auto;">
+              <img  class="form-control" name="s_image" placeholder="image" src="{{ asset($shoes->s_image) }}" style="height: auto;">
             </div>
 
 
             <div class="mb-3">
                 <label for="name" class="form-label">Product name</label>
-                <input type="text" class="form-control" name="name" placeholder="product_name" value="{{ $product->name }}">
+                <input type="text" class="form-control" name="s_name" placeholder="product_name" value="{{ $shoes->s_name }}">
               </div>
 
               <div class="mb-3">
                 <label for="price" class="form-label">Price (each product)</label>
-                <input type="text" class="form-control" name="price" placeholder="Price" value="{{ $product->price }}">
+                <input type="text" class="form-control" name="s_price" placeholder="Price" value="{{ $shoes->s_price }}">
               </div>
 
               <div class="mb-3">
                 <label for="quantity" class="form-label">Quantity</label>
-                <input type="text"  class="form-control" name="quantity" placeholder="Quantity" value="{{ $product->quantity }}">
+                <input type="text"  class="form-control" name="s_quantity" placeholder="Quantity" value="{{ $shoes->s_quantity }}">
               </div>
 
 
