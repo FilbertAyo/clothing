@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('layout.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -34,14 +34,15 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::resource('admin',ProductController::class);
+Route::resource('dashboard',ProductController::class);
 Route::resource('shoes', ShoesController::class);
 
-Route::get('/clothing',[HomeController::class ,'home']);
+Route::get('/',[HomeController::class ,'home']);
 Route::get('/cart',[HomeController::class , 'cart']);
 
 Route::get('/product/add-to-cart/{id}', [HomeController::class, 'addProduct'])->name('product.to.cart');
 Route::get('/shopping/cart', [HomeController::class, 'cart'])->name('shopping.cart');
-Route::get('/delete/cart/product',[HomeController::class,'deleteProduct'])->name('delete.cart.product');
+Route::get('/delete',[HomeController::class,'deleteProduct'])->name('delete.cart.product');
 
-
+Route::get('/shoes/add-to-cart/{id}', [HomeController::class, 'addShoes'])->name('shoes.to.cart');
+// Route::get('/shopping/cart', [HomeController::class, 'cart'])->name('shopping.cart');

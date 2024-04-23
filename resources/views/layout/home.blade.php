@@ -37,14 +37,14 @@
       <div class="d-flex align-items-center justify-content-between">
         <div class="logo">
           <div class="site-logo">
-            <a href="{{ url('/clothing') }}" class="js-logo-clone">Kibegi-store</a>
+            <a href="{{ url('/') }}" class="js-logo-clone">Kibegi-store</a>
           </div>
         </div>
         <div class="main-nav d-none d-lg-block">
           <nav class="site-navigation text-right text-md-center" role="navigation">
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li class="active">
-                <a href="{{ url('/clothing') }}">Home</a>
+                <a href="{{ url('/') }}">Home</a>
 
               </li>
 
@@ -55,7 +55,7 @@
         </div>
         <div class="icons">
 
-          <a href="{{ route('shopping.cart') }}" class="icons-btn d-inline-block bag ">
+          <a href="{{ url('/cart') }}" class="icons-btn d-inline-block bag ">
             <span class="icon-shopping-bag"></span>
             <span class="number">{{ count((array) session('cart')) }}</span>
           </a>
@@ -71,9 +71,9 @@
       <div class="row">
         <div class="col-md-6 ml-auto order-md-2 align-self-start">
           <div class="site-block-cover-content">
-          <h2 class="sub-title">#New Summer Collection 2024</h2>
+          <h2 class="sub-title">New Collection 2024</h2>
           <h1>Arrivals Sales</h1>
-          <p><a href="#" class="btn btn-black rounded-0">Shop Now</a></p>
+          <p><a href="#clothes" class="btn btn-black rounded-0">Shop Now</a></p>
           </div>
         </div>
         <div class="col-md-6 order-1 align-self-end">
@@ -92,18 +92,18 @@
       <div class="row align-items-stretch">
         <div class="col-lg-8">
           <div class="product-item sm-height full-height bg-gray">
-            <a href="#" class="product-category">Women <span>25 items</span></a>
+            <a href="#clothes" class="product-category">Women <span></span></a>
             <img src="images/model_4.png" alt="Image" class="img-fluid">
           </div>
         </div>
         <div class="col-lg-4">
           <div class="product-item sm-height bg-gray mb-4">
-            <a href="#" class="product-category">Men <span>25 items</span></a>
+            <a href="#clothes" class="product-category">Men <span></span></a>
             <img src="images/model_5.png" alt="Image" class="img-fluid">
           </div>
 
           <div class="product-item sm-height bg-gray">
-            <a href="#" class="product-category">Shoes <span>25 items</span></a>
+            <a href="#shoes" class="product-category">Shoes <span></span></a>
             <img src="images/model_6.png" alt="Image" class="img-fluid">
           </div>
         </div>
@@ -113,17 +113,14 @@
 
 
 
-
-
-
-
-<div class="site-section" id="women">
+<div class="site-section" id="clothes">
     <div class="container">
       <div class="row">
         <div class="title-section mb-5 col-12">
           <h2 class="text-uppercase">Available Clothes</h2>
         </div>
       </div>
+
 
 
 @if(session('success'))
@@ -157,7 +154,7 @@
   </div>
 
 
-  <div class="site-section">
+  <div class="site-section" id="shoes">
     <div class="container">
       <div class="row">
         <div class="title-section mb-5 col-12">
@@ -181,7 +178,7 @@
                 </a>
 
                 <div class="col-md-5" style="display: flex; float:right; margin:0;">
-                  <a href="" class="btn btn-outline-primary btn-block">Add to Cart</a>
+                  <a href="{{ route('shoes.to.cart',$shoe->id) }}" class="btn btn-outline-primary btn-block">Add to Cart</a>
                 </div>
 
                 <h2 class="item-title"><a href="#">{{ $shoe->s_name }}</a></h2>

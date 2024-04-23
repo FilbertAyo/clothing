@@ -968,10 +968,18 @@ a {
     background: white;
     position: absolute;
     top: 20%;
-    left:25%;
-    width: 50%;
+    left:10%;
+    width: 80%;
     /* background-color: black; */
     /* border: black 1px solid; */
+}
+
+.ad{
+
+    top: 20%;
+    left: 7%;
+    width: 86%;
+    padding: 50px;
 }
 
 

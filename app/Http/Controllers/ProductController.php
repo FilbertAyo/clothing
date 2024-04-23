@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('layout.admin');
+        return view('layout.dashboard');
     }
 
     /**
@@ -40,7 +40,7 @@ class ProductController extends Controller
         $requestData['image'] = '/storage/'.$path;
         Product::create($requestData);
 
-        return redirect()->route('admin.index')->with('success',"Product added successfully");
+        return redirect()->route('dashboard.index')->with('success',"Product added successfully");
     }
 
     /**
@@ -72,7 +72,7 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return redirect()->route('admin.index')->with('success',"Product updated successfully");
+        return redirect()->route('dashboard.index')->with('success',"Product updated successfully");
     }
 
     /**
@@ -84,6 +84,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('admin.index')->with('success',"Product deleted successfully");
+        return redirect()->route('dashboard.index')->with('success',"Product deleted successfully");
     }
 }

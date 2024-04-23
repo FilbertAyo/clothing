@@ -37,14 +37,14 @@
       <div class="d-flex align-items-center justify-content-between">
         <div class="logo">
           <div class="site-logo">
-            <a href="{{ url('/clothing') }}" class="js-logo-clone">Kibegi-store</a>
+            <a href="{{ url('/') }}" class="js-logo-clone">Kibegi-store</a>
           </div>
         </div>
         <div class="main-nav d-none d-lg-block">
           <nav class="site-navigation text-right text-md-center" role="navigation">
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li>
-                <a href="{{ url('/clothing') }}">Home</a>
+                <a href="{{ url('/') }}">Home</a>
               </li>
 
               <li><a href="#footer">Contact</a></li>
@@ -53,7 +53,7 @@
         </div>
         <div class="icons">
 
-          <a href="{{ route('shopping.cart') }}" class="icons-btn d-inline-block bag ">
+          <a href="{{ url('/cart') }}" class="icons-btn d-inline-block bag ">
             <span class="icon-shopping-bag"></span>
             <span class="number">{{ count((array) session('cart')) }}</span>
           </a>
@@ -69,6 +69,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0"><a href="{{ url('/cart') }}">Cart</a> </div>
+          {{-- <a href="{{ url('shopping.cart') }}" class="icons-btn d-inline-block bag "> --}}
         </div>
       </div>
     </div>
@@ -92,18 +93,26 @@
                     @foreach(session('cart') as $id => $details)
                   <tr>
                     <td class="product-thumbnail">
-                      <img src="{{ asset($details['image'] )}}" alt="Image" class="img-fluid">
+                      <img src="{{ asset($details['image'] )}} " alt="Image" class="img-fluid">
                     </td>
                     <td class="product-name">
                     {{ $details['name'] }}
                     </td>
-                    <td> {{ $details['price'] }}</td>
+                    <td> {{ $details['price'] }}/=</td>
 
-                    <td><a href="#" class="btn btn-primary height-auto btn-sm delete-product">X</a></td>
+                    {{-- <td><a href="#" class="btn btn-primary height-auto">X</a></td> --}}
+                <td>
+                    <form action="{{ route('delete.cart.product')}}" method="POST">
+                        @csrf
+                        {{-- <input type="hidden" name="product_id" value="{{ $productId }}"> --}}
+                        <button type="submit" class="btn btn-Primary height-auto">X</button>
+                    </form>
+                </td>
                   </tr>
 
                   @endforeach
                   @endif
+
 
                 </tbody>
               </table>
@@ -116,7 +125,7 @@
             <div class="row mb-5">
 
               <div class="col-md-6">
-                <a href="{{ url('/clothing') }}" class="btn btn-outline-primary btn-sm btn-block" id="cont-shopping">Continue Shopping</a>
+                <a href="{{ url('/') }}" class="btn btn-outline-primary btn-sm btn-block" id="cont-shopping">Continue Shopping</a>
               </div>
             </div>
 
@@ -131,14 +140,12 @@
                 </div>
                 <div class="row mb-5">
                   <div class="col-md-6">
-                    <span class="text-black">Total</span>
+                    <span class="text-black">Total Amount:</span>
                   </div>
-                  <div class="col-md-6 text-right">
+                  <div class="col-md-6">
+                    TZS -{{ session('totalPrice',0) }}/=
+                  </div>
 
-                    <strong class="text-black">TZS - {{
-                   count((array) session('cart'))
-                    }}/=</strong>
-                  </div>
                 </div>
 
                 <div class="row">
@@ -153,15 +160,7 @@
       </div>
     </div>
 
-    <div class="site-section" id="footer">
-        <div class="container">
-          <div class="row">
-            <div class="title-section mb-5 col-12">
-              <h2 class="text-uppercase">Contacts</h2>
-            </div>
-          </div>
 
-    @include('layout.contacts')
 
   </div>
 
@@ -175,15 +174,18 @@
 
 
             <div class="mb-3">
-                <label for="name" class="form-label">LIPA NUMBER</label>
-                <input type="text" class="form-control" name="price" placeholder="5377125 - MICHAEL BOSCO SANGA" readonly>
-              </div>
+                <label for="name" class="form-label">PHONE NUMBER</label>
+                <input type="text" class="form-control"  placeholder="+255 7552 37692" readonly>
+            </div>
+
+            <div class="mb-3">
+            <label for="name" class="form-label">LIPA NUMBER</label>
+            <input type="text" class="form-control"  placeholder="5377125 - MICHAEL B SANGA" readonly>
+             </div>
 
               <div class="mb-3">
                 <label for="price" class="form-label">TOTAL PRICE</label>
-                <input type="text" class="form-control" name="price" value="TZS - {{
-                    count((array) session('cart'))
-                     }}/=" readonly>
+                <input type="text" class="form-control" name="price" value=" TZS -{{ session('totalPrice',0) }}/=" readonly>
               </div>
 
               <button class="btn btn-primary btn-lg btn-block confirm-order">Confirm order</button>
@@ -213,26 +215,7 @@ overlay.addEventListener('click',function(){
 });
 
 
-    $(".delete-product").click(function(e){
-    e.preventDefault();
 
-    var ele =$(this);
-
-    if(confirm("Do you really want to delete?")){
-        $.ajax({
-            url:'{{ route('delete.cart.product')}}',
-            method: "DELETE",
-
-            data:{
-                _token:'{{ csrf_token() }}',
-                id: ele.parents('tr').attr('rowId')
-            },
-            success: function(response){
-                window.location.reload();
-            }
-        })
-    }
-});
 </script>
 
 

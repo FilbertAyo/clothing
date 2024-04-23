@@ -8,19 +8,17 @@
                   <div class="d-flex align-items-center justify-content-between">
                     <div class="logo">
                       <div class="site-logo">
-                        <a href="{{ route('dashboard') }}" class="js-logo-clone">Kibegi-store</a>
+                        <a href="{{ url('/dashboard') }}" class="js-logo-clone">Kibegi-store</a>
                       </div>
                     </div>
                     <div class="main-nav d-none d-lg-block">
                       <nav class="site-navigation text-right text-md-center" role="navigation">
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
-                          <li>
-                            <a href="{{ url('/admin') }}">Women Collection</a>
-
+                          <li class="active">
+                            <a href="{{ url('/dashboard') }}">Collection</a>
                           </li>
 
-                          <li><a href="#collection">Mens collection</a></li>
-                          <li><a href="#">Shoes</a></li>
+                          <li><a href="{{ route('shoes.index') }}">Shoes</a></li>
 
                           <li><a href="contact.html">Feedback</a></li>
                         </ul>
@@ -90,11 +88,11 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+        {{-- <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-        </div>
+        </div> --}}
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
