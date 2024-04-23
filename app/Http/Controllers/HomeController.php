@@ -97,6 +97,8 @@ class HomeController extends Controller
 
     public function deleteProduct(Request $request){
 
+
+
         $productId = $request->input('product_id');
 
         $cart = session()->get('cart',[]);
@@ -111,9 +113,9 @@ class HomeController extends Controller
             session()->put('cart',$cart);
             session()->put('totalPrice',$totalPrice);
 
-            return redirect()->back()->with('success',"product has been removed from the cart");
-        }else{
-            return redirect()->back()->with('success',"product not found in the cart");
+            return redirect()->back()->with('success',"Product has been removed from the cart");
+        } else {
+            return redirect()->back()->with('error',"Product not found in the cart");
         }
 
     }
