@@ -120,7 +120,7 @@
                 <td>
                     <form action="{{ route('delete.cart.product')}}" method="POST" enctype="multipart/form-data">
                         {!!  csrf_field() !!}
-                        {{-- <input type="hidden" name="product_id" value="{{ $productId }}"> --}}
+
                         <input type="hidden" name="product_id" value="{{ $id }}">
                         <button type="submit" class="btn btn-Primary height-auto">X</button>
                     </form>

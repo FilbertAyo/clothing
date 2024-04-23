@@ -85,14 +85,21 @@ class HomeController extends Controller
 
     public function cart(){
 
-        $cart = session()->get('cart',[]);
+        $cart = session()->get('cart', []);
 
+    // Calculate total price only if cart is not empty
+    $totalPrice = 0;
+    if (!empty($cart)) {
         $totalPrice = collect($cart)->sum(function($item){
-            return $item['price']*$item['quantity'];
+            // Check if 'price' key exists in the item
+            if (isset($item['price']) && isset($item['quantity'])) {
+                return $item['price'] * $item['quantity'];
+            }
+            return 0; // Return 0 if 'price' or 'quantity' key is missing
         });
-//    $totalPrice = Cache::get('totalPrice');
+    }
 
-        return view('layout.cart',compact('totalPrice'));
+    return view('layout.cart', compact('totalPrice'));
     }
 
     public function deleteProduct(Request $request){

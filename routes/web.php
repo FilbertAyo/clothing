@@ -38,11 +38,11 @@ Route::resource('dashboard',ProductController::class);
 Route::resource('shoes', ShoesController::class);
 
 Route::get('/',[HomeController::class ,'home']);
-Route::get('/cart',[HomeController::class , 'cart']);
+
 
 Route::get('/product/add-to-cart/{id}', [HomeController::class, 'addProduct'])->name('product.to.cart');
-Route::get('/shopping/cart', [HomeController::class, 'cart'])->name('shopping.cart');
+Route::get('/cart', [HomeController::class, 'cart'])->name('shopping.cart');
 Route::post('/delete',[HomeController::class,'deleteProduct'])->name('delete.cart.product');
 
 Route::get('/shoes/add-to-cart/{id}', [HomeController::class, 'addShoes'])->name('shoes.to.cart');
-// Route::get('/shopping/cart', [HomeController::class, 'cart'])->name('shopping.cart');
+
