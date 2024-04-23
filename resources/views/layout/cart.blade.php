@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
+      {{-- added  --}}
+      <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/dashboard/">
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Mukta:300,400,700') }}">
     <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
 
@@ -26,6 +39,9 @@
   <body>
 
   <div class="site-wrap">
+
+
+
 
 
 
@@ -150,7 +166,10 @@
 
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn btn-primary btn-lg btn-block order">Proceed To Order</button>
+                    {{-- <button class="btn btn-primary btn-lg btn-block order">Proceed To Order</button> --}}
+                    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+                        Proceed to order
+                      </button>
                   </div>
                 </div>
               </div>
@@ -168,12 +187,23 @@
 
 
 
-    <div class="add_form order-form hidden" style="padding: 15px; border-radius: 5px;">
+  {{-- modal  --}}
 
-        <div style="display: flex; justify-content:center; color: black;">PAYMENTS</div>
+  <div class="modal fade mt-4" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="card">
+        <div class="modal-header mt-4">
+          <h5 class="modal-title" id="exampleModalLabel">Payment method</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div aria-hidden="true" class="icon icon-box-danger ">
+              <span class="mdi mdi-close-box icon-item"></span>
+          </div>
+          </button>
+        </div>
+        <div class="modal-body">
 
-
-            <div class="mb-3">
+            <div class="">
                 <label for="name" class="form-label">PHONE NUMBER</label>
                 <input type="text" class="form-control"  placeholder="+255 7552 37692" readonly>
             </div>
@@ -190,37 +220,37 @@
 
               <button class="btn btn-primary btn-lg btn-block confirm-order">Confirm order</button>
 
+        </div>
 
-              </div>
-
-<div class="overlay hidden"></div>
-
-
-<script type="text/javascript">
-
-
-
-const order = document.querySelector('.order');
-const confirmOrder = document.querySelector('.order-form');
-const overlay = document.querySelector('.overlay');
-
-order.addEventListener('click',function(){
-    confirmOrder.classList.remove('hidden');
-    overlay.classList.remove( 'hidden' );
-});
-
-overlay.addEventListener('click',function(){
-    confirmOrder.classList.add('hidden');
-    overlay.classList.add('hidden');
-});
+      </div>
+    </div>
+  </div>
+  </div>
 
 
 
-</script>
 
+
+
+
+
+
+
+
+
+  <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl"
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js"
+  integrity="sha384-EbSscX4STvYAC/DxHse8z5gEDaNiKAIGW+EpfzYTfQrgIlHywXXrM9SUIZ0BlyfF"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+  integrity="sha384-i+dHPTzZw7YVZOx9lbH5l6lP74sLRtMtwN2XjVqjf3uAGAREAF4LMIUDTWEVs4LI"
+  crossorigin="anonymous"></script>
 
   <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
+  <script src="js/jquery-ui.js"></>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
