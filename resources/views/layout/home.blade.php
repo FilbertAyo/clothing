@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="col-md-6 order-1 align-self-end">
-          <img src="images/model_3.png" alt="Image" class="img-fluid">
+          <img src="images/pag2.png" alt="Image" class="img-fluid">
         </div>
       </div>
     </div>
@@ -120,7 +120,6 @@
           <h2 class="text-uppercase">Available Clothes</h2>
         </div>
       </div>
-
 
 
 @if(session('success'))

@@ -95,6 +95,11 @@
         <div class="row mb-5">
           <form class="col-md-12" method="post">
             <div class="site-blocks-table">
+                @if(session('success'))
+<div class="alert alert-success">
+{{ session('success') }}
+</div>
+@endif
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -105,7 +110,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @if(session('cart'))
+                    @if($totalPrice>0)
                     @foreach(session('cart') as $id => $details)
                   <tr>
                     <td class="product-thumbnail">
@@ -128,8 +133,12 @@
                   </tr>
 
                   @endforeach
-                  @endif
 
+                  @else
+                  <tr>
+                    <td class="text-center" colspan="4">Items not found in the cart</td>
+                </tr>
+            @endif
 
                 </tbody>
               </table>
@@ -159,6 +168,7 @@
                   <div class="col-md-6">
                     <span class="text-black">Total Amount:</span>
                   </div>
+
                   <div class="col-md-6">
                     TZS -{{ session('totalPrice',0) }}/=
                   </div>
@@ -196,11 +206,7 @@
         <div class="card">
         <div class="modal-header mt-4">
           <h5 class="modal-title" id="exampleModalLabel">Payment method</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <div aria-hidden="true" class="icon icon-box-danger ">
-              <span class="mdi mdi-close-box icon-item"></span>
-          </div>
-          </button>
+
         </div>
         <div class="modal-body">
 
@@ -219,7 +225,10 @@
                 <input type="text" class="form-control" name="price" value=" TZS -{{ session('totalPrice',0) }}/=" readonly>
               </div>
 
-              <button class="btn btn-primary btn-lg btn-block confirm-order">Confirm order</button>
+              {{-- <button class="btn btn-primary btn-lg btn-block confirm-order">Close order</button> --}}
+              <button type="button" class="close btn btn-danger btn-lg btn-block" data-dismiss="modal" aria-label="Close">
+Close order
+              </button>
 
         </div>
 

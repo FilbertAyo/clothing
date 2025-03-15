@@ -104,14 +104,14 @@ class HomeController extends Controller
 
     public function deleteProduct(Request $request){
 
-
-
         $productId = $request->input('product_id');
-
         $cart = session()->get('cart',[]);
 
         if(isset($cart[$productId])){
             unset($cart[$productId]);
+
+            // Reindex the array
+            $cart = array_values($cart);
 
             $totalPrice = collect($cart)->sum(function($item){
                 return $item['price']*$item['quantity'];

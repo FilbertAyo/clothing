@@ -65,7 +65,7 @@
                   @endforeach
                   @else
                   <tr>
-                    <td class="text-center" colspan="5">Product not found</td>
+                    <td class="text-center" colspan="7">Product not found</td>
                 </tr>
             @endif
 
